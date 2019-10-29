@@ -6,15 +6,15 @@ import dataaccess.UserDB;
 import java.util.ArrayList;
 
 /**
- * 
- * 
- * */
-
+ *
+ *
+ *
+ */
 public class UserService {
-    
-    
+
     /**
      * This method calls the getUser() method in UserDB.
+     *
      * @param email - the user's email to identify them in the database.
      * @return user - the user that is requested.
      * @throws Exception - all exceptions that could be had.
@@ -27,18 +27,18 @@ public class UserService {
 
     /**
      * This method calls the getAll() method from UserDB.
+     *
      * @return userList - a list of users from the database.
      * @throws Exception - all exceptions that could be had.
      */
     public List<User> getAll() throws Exception {
         UserDB db = new UserDB();
-        ArrayList<User> userList = (ArrayList<User>) db.getAll();
+        ArrayList<User> userList = (ArrayList<User>) db.getAllActive();
         ArrayList<User> activeUsers = new ArrayList<>();
-        
+
         for (int i = 0; i < userList.size(); i++) {
-            if(userList.get(i).isActive()) {
-                activeUsers.add(userList.get(i));
-            }
+            activeUsers.add(userList.get(i));
+
         }
         return activeUsers;
     }
@@ -47,7 +47,7 @@ public class UserService {
      * @Author David and Ayden With leadership from Ember
      * @param user
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     public int update(String email, String fname, String lname, String password) throws Exception {
         UserDB db = new UserDB();
@@ -58,8 +58,9 @@ public class UserService {
 
     /**
      * @Author David and Ayden With leadership from Ember
-     * 
-     * Method does not call delete function because business rule to logically delete
+     *
+     * Method does not call delete function because business rule to logically
+     * delete
      * @param email the email to delete
      * @return the int from UserDb
      * @throws Exception - all exceptions that could be had.
@@ -72,7 +73,7 @@ public class UserService {
         return i;
     }
 
-     /**
+    /**
      * @Author David and Ayden With leadership from Ember
      * @param user the user to update
      * @return the int from UserDb
